@@ -17,7 +17,11 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# for roles
 gem 'rolify', '~> 5.1.0'
+
+# for scope.. git it
+gem 'has_scope', '~> 0.7.0'
 
 # Use for pagination
 gem "will_paginate", '~> 3.0'
