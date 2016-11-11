@@ -1,14 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Commitment</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <!DOCTYPE html>
+  <!--[if IE 7]>                  <html class='ie7 no-js' lang='en'>     <![endif]-->
+  <!--[if lte IE 8]>              <html class='ie8 no-js' lang='en'>     <![endif]-->
+  <!--[if (gte IE 9)|!(IE)]><!--> <html class='not-ie no-js' lang='en'>  <!--<![endif]-->
+  <html>
+  <head>
+    <title><%= yield :title %> | Commitment</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <!-- Basic Page Needs -->
+    <meta charset='utf-8'>
+    <meta name='description' content=''>
+    <meta name='author' content=''>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+    <!-- Mobile Specific Metas -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <%= favicon_link_tag %>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script>
+  <script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script>
+  <![endif]-->
 </head>
 <body>
+  <% if current_page?(root_path) %>
+  <!--START SCROLL TOP BUTTON -->
+  <a class="scrollToTop" href="#">
+    <i class="fa fa-angle-up"></i>      
+  </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <% end %>
+
+  <!-- BEGAIN PRELOADER -->
+  <!-- <div id='preloader'>
+    <div class='loader'>&nbsp;</div>
+  </div> -->
+<!-- END PRELOADER -->
+
+<!-- SCROLL TOP BUTTON -->
+<a class='scrollToTop' href='#'><i class='fa fa-chevron-up'></i></a>
+<!-- END SCROLL TOP BUTTON -->
+
+<% if current_page?(root_path) %>
+  <!-- Start header section -->  
+  <%= render 'header' %>
+  <!-- End header section -->
+<% end %>
+
+<!-- Start menu section -->
+<section id='menu-area'>
+  <%= render 'menu' %> 
+  <%= render 'partials/search' %>
+</section>
+<!-- End menu section -->
 
 <%= yield %>
 
+<!-- Start Footer -->    
+<%= render 'footer' %>
+<!-- End Footer -->
 </body>
 </html>
