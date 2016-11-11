@@ -1,18 +1,24 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  has_many :courses, through: :enrollments
-  has_many :answers
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
   has_many :challenges
+  has_many :answers
+  has_many :courses, through: :enrollments, dependent: :destroy
+
   has_one :school
   validates :email, presence: {message: 'You must enter your email'}
   validates :name, presence: { message: 'You must enter your name' }
   validates :school, presence: { message: 'You must enter your school' }
-# validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+(edu))\z/i, on: :create }
+  
+# validates_format_of :email, without: /\Achange@me/, on: :update
+  validates :password, length: { minimum: 8, maximum: 64 }, unless: "password.nil?"
+  validates :password, presence: true, if: "id.nil?"
+
+  validates :name, presence: { message: 'You must enter your name'}
+# validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.edu))\z/i, on: :create }
+
   validates_uniqueness_of :email
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)
