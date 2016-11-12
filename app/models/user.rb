@@ -47,12 +47,6 @@ class User < ActiveRecord::Base
         #user.skip_confirmation!
         #user.skip_confirmation! if user.respond_to?(:skip_confirmation)
         user.save
-#flash[:notice] = 'User saved successfully'
-#         redirect_to root
-#else
-            #Saving failed, we can inspect @user.errors for more information
-# flash[:alert] = 'User was not saved.'
-#       end 
       end
     end
   end

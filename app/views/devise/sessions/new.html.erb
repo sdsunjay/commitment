@@ -14,12 +14,6 @@
         </div><!-- end .textcenter -->
       </div><!-- end .col-xs-12 -->
       <div class='col-lg-offset-3 col-md-offset-2 col-lg-6 col-md-8 col-sm-12'>
-        <br/>
-        <div class='textcenter'>
-          <%= link_to image_tag('/assets/facebooklogin.png', style: 'height: 40px; margin-bottom: 20px'), omniauth_authorize_path(resource_name, "facebook") %>
-        </div><!-- end .textcenter -->    
-      </div><!-- end .col-xs-12 -->
-      <div class='col-lg-offset-3 col-md-offset-2 col-lg-6 col-md-8 col-sm-12'>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "comment-form"}) do |f| %>
         <div class='form-group'>
         <%= f.email_field :email, autofocus: true, placeholder: 'Please Enter Your Email', class: 'form-control' %>
