@@ -76,7 +76,7 @@ end
   def challenge_params
     params
     .require(:challenge)
-    .permit(:course_id, :question, :release_date, :point, :user_id)
+    .permit(:course_id, :question, :correct_answer, :release_date, :points, :user_id)
     .merge(user_id: current_user.id)
   end
 end

@@ -47,12 +47,6 @@ users = User.create!([
       {email: "rhlevine@calpoly.edu", name:"Ross Levine", school_id: 0, password: "password", role: 4},
       {email: "jeffrey@calpoly.edu", name:"Jeffrey Do", school_id: 0, password: "password", role: 4},
       {email: "mfouzi@calpoly.edu", name:"Monty Fouzi", school_id: 0, password: "password", role: 4}])
-#userz = User.create()
-#[:admin, :student, :teacher, :customer].each do |role|
-#  userz.add_role role
-#end
-#userz.destroy
-
 challenges = Challenge.create ([
 	{course_id: 1, user_id: 3, question: "What is the second stage in the scientific method?", points: 5, release_date: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")}, # form a "hypothesis"
 	{course_id: 1, user_id: 3, question: "A researcher observes the behavior of students in the library without interacting with them. What type of study is this?", points: 5, release_date: DateTime.strptime("11/13/2016 17:00", "%m/%d/%Y %H:%M")}, # Naturalistic observation

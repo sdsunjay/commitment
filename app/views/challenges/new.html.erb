@@ -1,0 +1,28 @@
+<%= title "Create a new question and answer!" %>
+
+<div class="container comment-form">
+   <div class="row">
+      <%= form_for([@course, @challenge], html: {class: "comment-form"}) do |f| %>
+	 <div class="form-group">
+	    <div class="col-xs-12">
+	       <%= f.label :'Question' %>
+		  <%= f.text_area :question, class: 'form-control' %>
+	    </div>
+	    <div class="col-xs-12">
+	       <%= f.label :'Answer' %>
+		  <%= f.text_area :correct_answer, class: 'form-control' %>
+	    </div>
+	    <div class="col-xs-12">
+	       <%= f.label :'Release Date' %>
+	       <%= f.datetime_select :release_date, class: 'form-control' %>
+	    </div>
+  
+	    <div class="col-xs-12">
+	       <%= f.button :submit, class:'button button-default', 'data-text': 'SUBMIT' do %>
+		  <span>SUBMIT</span>
+	       <% end %>
+	    </div>
+	 </div>
+      <% end %>
+   </div>
+</div>
