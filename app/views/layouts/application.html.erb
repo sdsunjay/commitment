@@ -40,29 +40,37 @@
   <!-- <div id='preloader'>
     <div class='loader'>&nbsp;</div>
   </div> -->
-<!-- END PRELOADER -->
+  <!-- END PRELOADER -->
 
-<!-- SCROLL TOP BUTTON -->
-<a class='scrollToTop' href='#'><i class='fa fa-chevron-up'></i></a>
-<!-- END SCROLL TOP BUTTON -->
+  <!-- SCROLL TOP BUTTON -->
+  <a class='scrollToTop' href='#'><i class='fa fa-chevron-up'></i></a>
+  <!-- END SCROLL TOP BUTTON -->
 
-<% if current_page?(root_path) %>
+  <% if current_page?(root_path) %>
   <!-- Start header section -->  
   <%= render 'header' %>
   <!-- End header section -->
-<% end %>
+  <% end %>
 
-<!-- Start menu section -->
-<section id='menu-area'>
-  <%= render 'menu' %> 
-  <%= render 'partials/search' %>
-</section>
-<!-- End menu section -->
+  <!-- Start menu section -->
+  <section id='menu-area'>
+    <%= render 'menu' %> 
+    <%= render 'partials/search' %>
+  </section>
+  <!-- End menu section -->
 
-<%= yield %>
+  <% if !current_page?(root_path) %>
+  <!-- Start blog banner section -->
+  <section id='blog-banner'>
+    <%= render 'banner' %> 
+  </section>
+  <!-- End blog banner section -->
+  <% end %>
 
-<!-- Start Footer -->    
-<%= render 'footer' %>
-<!-- End Footer -->
+  <%= yield %>
+
+  <!-- Start Footer -->    
+  <%= render 'footer' %>
+  <!-- End Footer -->
 </body>
 </html>
