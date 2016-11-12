@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
    has_many :users, through: :enrollments
+   has_many :enrollments
    validates :name, presence: { message: 'Please enter course number' }
    validates :course_number, presence: { message: 'Please enter course number' }
    validates_length_of :name, minimum: 3, maximum: 256, allow_blank: false

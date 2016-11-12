@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :challenges
   has_many :answers
   has_many :courses, through: :enrollments, dependent: :destroy
+  has_many :enrollments
 
   has_one :school
   validates :email, presence: {message: 'You must enter your email'}
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
 # validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.edu))\z/i, on: :create }
 
   validates_uniqueness_of :email
-
+  enum role: [:student, :teacher, :customer, :admin, :super_admin]
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)

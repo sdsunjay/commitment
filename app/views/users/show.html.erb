@@ -1,0 +1,105 @@
+<% if user_signed_in? && current_user == current_user %>
+    <%= title "My Profile" %>
+<% else %>
+    <%= title current_user.name + "'s Profile" %>
+<% end %>
+
+<%= render 'partials/alerts' %>
+
+<section id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-12">
+                <div class="blog-area">
+                    <div class="blog-left blog-archive">
+                        <article class="single-from-blog wow fadeInLeft">
+                            <div class="single-widget" style="border: none">
+                                <h2>
+                                    <%= current_user.name %>
+                                    <% if current_user == current_user %>
+                                        <%= link_to 'Edit', edit_user_registration_path(current_user), class: 'fa fa-edit tooltip-link', 'data-original-title': 'Edit Profile Information', 'data-toggle': 'tooltip', style: 'color: 00d999; float: right; font-size: 0.6em' %>
+                                    <% end %>
+                                </h2>
+
+                                <div class="popular-post-widget">
+                                    <div class="single-item">
+                                        <div class="col-sm-8">
+                                            <h4 class="user-name">
+                                                <i class="fa fa-user" style="color: #00d999; font-size: 1.5em;"></i>
+                                                <strong>About me</strong>
+                                            </h4>
+
+                                            <hr>
+
+                                            <h5>
+                                                <i class="fa fa-star" style="color: #00d999;"></i>
+                                                (<%= @count_reviews %> Rating received)
+                                            </h5>
+
+                                            <hr>
+
+                                            <h5>
+                                                <i class="fa fa-mobile" style="color: #00d999; font-size: 1.3em;"></i>
+                                            </h5>
+                                            <h5>
+                                                <i class="fa fa-envelope" style="color: #00d999;"></i>
+                                                Email: 
+                                                <% if current_user.email.present? %>
+                                                    <i class="fa fa-check" style="color: green"></i>
+                                                    verified
+                                                <% else %>
+                                                    <i class="fa fa-times" style="color: red"></i>
+                                                    not verified
+                                                <% end %>
+                                            </h5>
+
+                                        </div>
+                                   </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <%= render 'partials/courses' %>
+                    </div>
+                </div>
+            </div>
+             <div class="col-lg-4 col-md-5 col-sm-12">
+                <aside class="blog-right wow fadeInRight">
+                    <!-- Start Sidebar Single widget -->
+                    <div class="single-widget">
+                        <h4>
+                            <i class="fa fa-bar-chart" style="color: #00d999;"></i>
+                            <strong>Activity</strong>
+                        </h4>
+
+                        <hr class="line2">
+
+                        <p>
+                            <i class="fa fa-map-marker" style="color: #00d999;"></i>
+                        </p>
+                        <p>
+                            <i class="fa fa-calendar" style="color: #00d999;"></i>
+                            <strong>Since:</strong> <%= current_user.created_at.strftime("%m/%d/%Y") %>
+                        </p>
+                        <p>
+                            <i class="fa fa-power-off" style="color: #00d999;"></i>
+                            <strong>Last visit:</strong> <%= current_user.last_sign_in_at.strftime("%m/%d/%Y") %>
+                        </p>
+                    </div>
+                    <!-- End Sidebar Single widget -->
+                    <!-- Start Sidebar Single widget -->
+                    <div class="single-widget">
+                        <h4>
+                            <i class="fa fa-car" style="color: #00d999;"></i>
+                            <strong>My Car</strong>
+                        </h4>
+
+                        <hr>
+                        
+                    </div>
+                    <!-- End Sidebar Single widget -->
+                </aside> 
+            </div>
+        </div>
+    </div>
+</section>
