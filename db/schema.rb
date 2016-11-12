@@ -14,11 +14,12 @@
 ActiveRecord::Schema.define(version: 20161112185016) do
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "user_id",      null: false
-    t.integer  "challenge_id", null: false
-    t.text     "attempt",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "challenge_id",                 null: false
+    t.text     "attempt",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "correct",      default: false
   end
 
   create_table "challenges", force: :cascade do |t|
