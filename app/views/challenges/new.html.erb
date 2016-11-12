@@ -1,28 +1,72 @@
-<%= title "Create a new question and answer!" %>
+<%= title "New Challenge" %>
 
-<div class="container comment-form">
-   <div class="row">
-   <%= form_for @challenge, :url => course_challenges_path(@course), html: {class: "comment-form"} do |f| %>
-	 <div class="form-group">
-	    <div class="col-xs-12">
-	       <%= f.label :'Question' %>
-		  <%= f.text_area :question, class: 'form-control' %>
-	    </div>
-	    <div class="col-xs-12">
-	       <%= f.label :'Answer' %>
-		  <%= f.text_area :correct_answer, class: 'form-control' %>
-	    </div>
-	    <div class="col-xs-12">
-	       <%= f.label :'Release Date' %>
-	       <%= f.datetime_select :release_date, class: 'form-control' %>
-	    </div>
-  
-	    <div class="col-xs-12">
-	       <%= f.button :submit, class:'button button-default', 'data-text': 'SUBMIT' do %>
-		  <span>SUBMIT</span>
-	       <% end %>
-	    </div>
-	 </div>
-      <% end %>
-   </div>
+<section id="mu-course-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mu-course-content-area">
+          <div class="row">
+            <div class="col-md-9">
+              <!-- start course content container -->
+              <div class="mu-course-container mu-course-details">
+             
+                    <%= form_for @challenge, :url => course_challenges_path(@course), html: {class: "comment-form"} do |f| %>
+                    <div class="form-group">
+                      <div class="col-xs-12">
+                        <%= f.label :'Question' %>
+                        <%= f.text_area :question, class: 'form-control' %>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <div class="col-xs-12">
+                        <br/>
+                        <%= f.label :'Answer' %>
+                        <%= f.text_area :correct_answer, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-xs-12">
+                        <br/>
+                        <%= f.button :submit, class:'button button-default', 'data-text': 'SUBMIT' do %>
+                          <span>SUBMIT</span>
+                        <% end %>
+                        <br/>
+                      </div>
+                    </div>
+                    <% end %>
+
+                
+              </div>
+              <!-- end course content container -->
+            </div>
+            <div class="col-md-3">
+              <!-- start sidebar -->
+              <aside class="mu-sidebar">
+                <!-- start single sidebar -->
+                <div class="mu-single-sidebar">
+                  <h3>Course Details</h3>
+                  <ul class="mu-sidebar-catg">
+                    <li><a><%= @course.name %></a></li>
+                    <li><a><%= @course.course_number %></a></li>
+                    <li><a>
+                      <% if @course.created_at > Time.now.beginning_of_day %>
+                      <%="#{time_ago_in_words(@course.created_at)} ago"%>
+                      <% else %>
+                      <%= @course.created_at.strftime("%b %d, %Y") %>
+                      <% end %>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- end single sidebar -->
+
+            </aside>
+            <!-- / end sidebar -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+</section>
