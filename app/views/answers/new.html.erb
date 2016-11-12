@@ -11,7 +11,11 @@
          <%= f.text_area :attempt, class: 'form-control' %>
       </div>
 
-      <button>Submit</button>
+	    <div class="col-xs-12">
+	       <%= f.button :submit, class:'button button-default', 'data-text': 'SUBMIT' do %>
+		  <span>SUBMIT</span>
+	       <% end %>
+	    </div>
 
       <% end %>
    </div>

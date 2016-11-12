@@ -18,15 +18,16 @@ class AnswersController < ApplicationController
 #  end
 
   def new
-    @challenge = Challenge.find(params[:challenge_id])
-    @course_id = params[:course_id]
     @page_title = 'Add Answer'
+    @challenge = Challenge.find(params[:challenge_id])
+    @course = Course.find(params[:course_id])
     @answer = current_user.answers.build
   end
 
   def create
     @answer = current_user.answers.build(answer_params)
     @answer.user_id = current_user.id
+    @answer.challenge_id = params[:challenge_id]
 
     # Save the answer
     if @answer.save
