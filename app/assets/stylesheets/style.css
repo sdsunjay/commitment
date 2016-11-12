@@ -25,6 +25,7 @@
 #BLOG PAGE
 #GALLERY PAGE
 #CONTACT PAGE
+#SIGN IN PAGE
 #ERROR  PAGE
 #FOOTER SECTION
 #RESPONSIVE DESIGN
@@ -2082,6 +2083,14 @@ display: flex;
 }
 #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right iframe {
   height: 500px;
+}
+
+
+/*==================
+ SIGN IN PAGE
+====================*/
+.checkbox input[type="checkbox"]{
+  margin-left: 0;
 }
 
 /*==================
