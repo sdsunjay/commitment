@@ -63,8 +63,7 @@ class CourseController < ApplicationController
 
   def set_course
     @course = Course.find(params[:id])
-    @user = User.find(params[:user_id])
-    @user_courses = @user.courses
+    @challenges = Challenge.find(params[:course_id])
   end
 
   def course_params
