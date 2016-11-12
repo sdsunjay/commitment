@@ -8,7 +8,7 @@
 config/initializers/secret_token.rb
 # We don't want this in the repo
 # Aaron said he's going to fix this, so okay...
-# config/secrets.yml
+config/facebook.yml
 
 current
 releases
