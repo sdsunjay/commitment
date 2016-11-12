@@ -26,16 +26,18 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    @challenge = current_user.challenges.build(challenge_params)
-    @challenge.user_id = current_user.id
-
+     @course = Course.find(params[:course_id])
+     @challenge = current_user.challenges.build(challenge_params)
+     @challenge.user_id = current_user.id
+     @challenge.course_id = @course.id
     # Save the challenge
-    if @challenge.save
-      flash[:notice] = 'Challenge Created'
-      redirect_to courses_path
-    else
+     if @challenge.save
+       flash[:notice] = 'Challenge Created'
+       redirect_to course_path(@course)
+     else     
       flash[:alert] = 'Challenge Not Created'
-    end
+      render 'new'
+     end
   end
 
   def edit
@@ -78,6 +80,6 @@ end
     params
     .require(:challenge)
     .permit(:course_id, :question, :correct_answer, :release_date, :points, :user_id)
-    .merge(user_id: current_user.id)
+    .merge(user_id: current_user.id, points: 0, release_date: "2016-11-12 21:42:17")
   end
 end
