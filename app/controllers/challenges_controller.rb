@@ -9,11 +9,11 @@ class ChallengesController < ApplicationController
   has_scope :release_date
 
   def index
-    if(params.has_key?(:release_date) || params.has_key?(:course_id))
-      @challenges = Challenge.search(params[:release_date], params[:course_id]).order(created_at: :desc).paginate(per_page: 10, page: params[:page])
-    else
+#if(params.has_key?(:release_date) || params.has_key?(:course_id))
+#      @challenges = Challenge.search(params[:release_date], params[:course_id]).order(created_at: :desc).paginate(per_page: 10, page: params[:page])
+#    else
       @challenges = Challenge.all.order(created_at: :desc).paginate(per_page: 10, page: params[:page])
-    end
+#    end
   end
 
   def show
