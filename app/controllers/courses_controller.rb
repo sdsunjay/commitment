@@ -1,4 +1,4 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
 
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -16,7 +16,6 @@ class CourseController < ApplicationController
   end
 
   def new
-    @page_title = 'Add Course'
     @course = current_user.courses.build
   end
 
@@ -63,7 +62,7 @@ class CourseController < ApplicationController
 
   def set_course
     @course = Course.find(params[:id])
-    @challenges = Challenge.find(params[:course_id])
+    @challenges = Challenge.where(course_id: @course.id).order(created_at: :desc).paginate(per_page: 5, page: params[:page])
   end
 
   def course_params
