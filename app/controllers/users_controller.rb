@@ -51,6 +51,8 @@ class UsersController < ApplicationController
 
   private
     def set_user
+      @enrollment = Enrollment.new
+      @all_courses = Course.all.order(created_at: :desc).paginate(per_page: 5, page: params[:page])
       @user = User.find(params[:id])
       @courses = current_user.courses.order(created_at: :desc).paginate(per_page: 5, page: params[:page])
       @answers = current_user.answers.order(created_at: :desc).paginate(per_page: 5, page: params[:page])
