@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   authenticate :user do
     get 'users/:id/connect', to: 'users#connect', as: :user_connect
     resources :enrollments, only: [:new, :create]
-    resources :answers, only: [:index, :edit, :update]
+    resources :answers, only: [:index]
     resources :courses, only: [:show, :index, :new, :create] do
       resources :challenges, only: [:index, :show, :edit, :new, :create, :edit, :update] do
-        resources :answers, only: [:new, :create]
+        resources :answers, only: [:new, :create, :edit, :update, :show]
       end
     end
     resources :users, only: [:show, :index, :edit, :update]
