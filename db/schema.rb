@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20161112090953) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name",          limit: 255, default: "", null: false
-    t.integer  "course_number",                          null: false
+    t.string   "course_number",                          null: false
     t.text     "description"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
