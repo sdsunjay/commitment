@@ -3,3 +3,4 @@
     <%= link_to challenge.question, new_course_challenge_answer_path(@course.id, challenge.id), class: 'list-group-item' %>
   <% end %>
 <% end %>
+<%= link_to 'Enter a challenge',  new_course_challenge_path(@course), class: 'list-group-item' %>

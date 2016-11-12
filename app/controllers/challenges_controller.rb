@@ -21,6 +21,7 @@ class ChallengesController < ApplicationController
 
   def new
     @page_title = 'Add Challenge'
+    @course = Course.find(params[:course_id])
     @challenge = current_user.challenges.build
   end
 

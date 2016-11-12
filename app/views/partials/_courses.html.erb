@@ -31,11 +31,34 @@
       <figure class="mu-blog-single-img">
         <!-- <a href="#"><img src="assets/img/blog/blog-1.jpg" alt="img"></a> -->
         <figcaption class="mu-blog-caption">
-          <h3>No courses yet</h3>
-          <h2><% link_to "Enroll in Courses", new_enrollment_path %></h2>
-	      </figcaption>                      
+          <h3>No courses yet</h3> 
+	       </figcaption>                      
       </figure>
     </article> 
+    <% @all_courses.each_with_index do |course, index| %>
+          <article class="mu-blog-single-item">
+            <figure class="mu-blog-single-img">
+              <figcaption class="mu-blog-caption">
+                <h3><%= course.name %></h3>
+              </figcaption>                      
+            </figure>
+            <div class="mu-blog-meta">
+              <a>By Admin
+              <a>
+                <% if course.created_at > Time.now.beginning_of_day %>
+                  <%="#{time_ago_in_words(course.created_at)} ago"%>
+                <% else %>
+                  <%= course.created_at.strftime("%b %d, %Y") %>
+                <% end %>
+              </a>
+            </div>
+            <div class="mu-blog-description">
+              <p><%= truncate(course.description, length: 200) %></p>
+              <%= link_to "Enroll", user_connect_path(course), class: 'mu-read-more-btn' %>
+            </div>
+          </article> 
+    <% end %>
+   <%= will_paginate @courses %>
   </div>
 <% end %>
 

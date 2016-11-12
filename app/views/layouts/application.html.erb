@@ -60,12 +60,20 @@
   <!-- End menu section -->
 
   <% if !current_page?(root_path) %>
-  <!-- Start blog banner section -->
-  <section id='blog-banner'>
-    <%= render 'banner' %> 
-  </section>
-  <!-- End blog banner section -->
-  <% end %>
+    <!-- Start blog banner section -->
+    <section id='blog-banner'>
+      <%= render 'banner' %> 
+    </section>
+    <!-- End blog banner section -->
+  <% else %>
+    <% if user_signed_in? %>
+      <!-- Start blog banner section -->
+      <section id='blog-banner'>
+        <%= render 'banner' %> 
+      </section>
+      <!-- End blog banner section -->
+    <% end %>
+<% end %>
 
   <%= yield %>
 
