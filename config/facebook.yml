@@ -1,6 +1,0 @@
-development:
-  app_id: 703639416469580
-  secret: e73d3107fa861a616a7cc002b30b9e9c
-production:
-  app_id: <app_id>
-  secret: <secret>
