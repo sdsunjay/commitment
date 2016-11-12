@@ -39,7 +39,7 @@ schools = School.create ([
 	{name: "University of California, Santa Barbara", address: "Santa Barbara, CA 93106"}])
 
 users = User.create!([
-      {email: "sdhama@calpoly.edu", name:"Sunjay Dhama", school_id: 1, password: "password", role: 4},
+      {email: "sunjay@calpoly.edu", name:"Sunjay Dhama", school_id: 1, password: "password", role: 4},
       {email: "pgeorgie@calpoly.edu", name:"Petar Georgiev", school_id: 1, password: "password", role: 4},
       {email: "efiske@calpoly.edu", name:"Elliot Fiske", school_id: 1, password: "password", role: 4},
       {email: "ian@calpoly.edu",name:"Ian Mitchell", school_id: 2, password: "password", role: 4},
