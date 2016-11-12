@@ -1,11 +1,62 @@
+<%= title "Review Challenge" %>
 
-   <p>Question:</p>
-   <p><%= @challenge.question %>
-    <% if @challenge.correct_answer.present? %>
-   <p>Correct Answer:</p>
-   <p><%= @challenge.correct_answer %>
-   <% end %>
-    <% if @answer.attempt.present? %>
-   <p>Your Answer:</p>
-   <p><%= @answer.attempt %>
-   <% end %>
+<section id="mu-course-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mu-course-content-area">
+          <div class="row">
+            <div class="col-md-9">
+              <!-- start course content container -->
+              <div class="mu-course-container mu-course-details">
+               
+                <blockquote>
+                  <h2>Question</h2>
+                  <p><%= @challenge.question %>
+                </blockquote>
+
+                <blockquote style="border-left: 5px solid #4ed44e;">
+                  <h2>Correct Answer</h2>
+                  <p><%= @challenge.correct_answer %>
+                </blockquote>
+
+                <blockquote style="border-left: 5px solid #ece34f;">
+                  <h2>Your Answer</h2>
+                  <p><%= @answer.attempt %>
+                </blockquote>
+
+              </div>
+              <!-- end course content container -->
+            </div>
+            <div class="col-md-3">
+              <!-- start sidebar -->
+              <aside class="mu-sidebar">
+                <!-- start single sidebar -->
+                <div class="mu-single-sidebar">
+                  <h3>Course Details</h3>
+                  <ul class="mu-sidebar-catg">
+                    <li><a><%= @course.name %></a></li>
+                    <li><a><%= @course.course_number %></a></li>
+                    <li><a>
+                      <% if @course.created_at > Time.now.beginning_of_day %>
+                      <%="#{time_ago_in_words(@course.created_at)} ago"%>
+                      <% else %>
+                      <%= @course.created_at.strftime("%b %d, %Y") %>
+                      <% end %>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- end single sidebar -->
+
+            </aside>
+            <!-- / end sidebar -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+

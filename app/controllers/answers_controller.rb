@@ -42,6 +42,7 @@ class AnswersController < ApplicationController
   def show
       @challenge = Challenge.find(params[:challenge_id])
       @answer = Answer.find(params[:id])
+      @course = Course.find(@challenge.course_id)
   end
 
   def edit
