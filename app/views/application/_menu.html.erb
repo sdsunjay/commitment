@@ -21,34 +21,23 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
           <li><%= link_to 'Home', root_path %></li>
-          <% if user_signed_in? %>            
-             <li class="dropdown">
-	       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add New<span class="caret"></span></a>
-		  <ul class="dropdown-menu" "navbar-right" role="menu">
-		  </ul>
-	    </li>	
+          <% if user_signed_in? %>         
 
-	    <li class="dropdown">
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Courses<span class="caret"></span></a>
               <ul class="dropdown-menu" "navbar-right" role="menu"> 
-		  <li><%= link_to 'PSY-201',  course_path(1) %></li>
-		  <li><%= link_to 'PSY-202',  course_path(2) %></li>
-		  <li><%= link_to 'PSY-212',  course_path(3) %></li>
-		  <li><%= link_to 'PSY-252',  course_path(4) %></li>
-	       </ul>
-	    </li>
-      
-	    <li><%= link_to 'Question',  new_course_challenge_path(1) %></li>
+          		  <li><%= link_to 'PSY-201',  course_path(1) %></li>
+          		  <li><%= link_to 'PSY-202',  course_path(2) %></li>
+          		  <li><%= link_to 'PSY-212',  course_path(3) %></li>
+          		  <li><%= link_to 'PSY-252',  course_path(4) %></li>
+              </ul>
+            </li>
             <li><%= link_to 'My Profile', current_user, class: 'less-padding' %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'less-padding' %></li>
           <% else %>
             <li><%= link_to 'Sign In', new_user_session_path, class: 'less-padding' %></li>
             <li><%= link_to 'Sign Up', new_user_registration_path, class: 'less-padding' %></li>
           <% end %>                   
-          <!-- <li><a href="contact.html">Contact</a></li> -->
-          <!-- <% if !current_page?(root_path) %>             
-            <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
-          <% end %> -->
         </ul>                     
       </div><!--/.nav-collapse -->        
     </div>     
