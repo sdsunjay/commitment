@@ -1,0 +1,18 @@
+<%= title "Make a new attempt!" %>
+
+<div class="container comment-form">
+   <div class="row">
+      <%= form_for @answer, :url => course_challenge_answers_path(@course_id, @challenge), html: {class: "comment-form"} do |f| %>
+
+      <div class="form-group">
+         <h2>
+            <%= f.label @challenge.question %>
+         </h2>
+         <%= f.text_area(:attempt) %>
+      </div>
+
+      <button>Submit</button>
+
+      <% end %>
+   </div>
+</div>

@@ -1,0 +1,16 @@
+a, a:hover {
+   /*text-decoration: underline;*/
+}
+
+.challenge-panel ul a, .challenge-panel ul a:last-child, .challenge-panel ul.list-group {
+   margin-bottom: 0px !important;
+}
+
+.challenge-panel .panel-heading {
+   font-style: bold;
+}
+
+.challenge-panel ul a:hover {
+   background-color: #f8f8f8;
+   cursor: pointer;
+}

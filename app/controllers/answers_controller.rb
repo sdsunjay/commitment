@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
 
-  before_action :set_answer, only: [:show, :create, :new, :edit, :update, :destroy]
+  before_action :set_answer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   has_scope :recent, :type => :boolean
@@ -18,6 +18,8 @@ class AnswersController < ApplicationController
 #  end
 
   def new
+    @challenge = Challenge.find(params[:challenge_id])
+    @course_id = params[:course_id]
     @page_title = 'Add Answer'
     @answer = current_user.answers.build
   end
@@ -28,8 +30,8 @@ class AnswersController < ApplicationController
 
     # Save the answer
     if @answer.save
+      redirect_to course_path(params[:course_id])
       flash[:notice] = 'Answer Created'
-      redirect_to challenges_path
     else
       render 'new'
     end
@@ -62,7 +64,6 @@ class AnswersController < ApplicationController
 
   private
 
-
   def set_answer
     @answer = Answer.find(params[:id])
     @challenge = Challenge.find(params[:challenge_id])
@@ -70,6 +71,7 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
+    @challenge = Challenge.find(params[:challenge_id])
     params
     .require(:answer)
     .permit(:attempt, :points)
