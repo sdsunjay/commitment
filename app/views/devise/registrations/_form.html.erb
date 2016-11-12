@@ -13,7 +13,7 @@
 
 <div class='form-group'>
     <div class='col-sm-12'>
-        <%= f.select :school_id, options_from_collection_for_select(School.all, 'id', 'name', 1), {}, {autofocus: 'true', class: 'form-control', prompt: "Please Select Your School"} %>
+     <%= f.select :school_id, School.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select Your School'}, class:'form-control' %>
     </div><!-- end .col-sm-6 -->
 </div><!-- end .form-group -->
 

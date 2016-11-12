@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-    devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks"}
-
+    devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'}
     authenticate :user do
         resources :enrollments, only: [:show, :index, :new, :create, :edit, :update] do
             resources :courses, only: [:show, :index, :new, :create] do
