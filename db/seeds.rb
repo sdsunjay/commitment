@@ -45,7 +45,7 @@ challenge3 = Challenge.create :course_id => 1, :user_id => 3, :question => 'A __
 challenge4 = Challenge.create :course_id => 1, :user_id => 3, :question => 'This type of cell makes up the majority of your brain.', :points => 5, :release_date => DateTime.strptime("11/15/2016 17:00", "%m/%d/%Y %H:%M") # glial
 challenge5 = Challenge.create :course_id => 1, :user_id => 3, :question => 'True or False: the synapse is a gap between the end bulbs and the dendrites.', :points => 5, :release_date => DateTime.strptime("11/16/2016 17:00", "%m/%d/%Y %H:%M") # true
 challenge6 = Challenge.create :course_id => 1, :user_id => 3, :question => 'What is the resting voltage difference in a neuron, in millivolts?', :points => 10, :release_date => DateTime.strptime("11/17/2016 17:00", "%m/%d/%Y %H:%M") # -70
-challenge6 = Challenge.create :course_id => 1, :user_id => 3, :question => 'Which kind of dendrite responds to physical pressure? A: Chemoreceptor B: Mechanoreceptor C: Tactoreceptor D: Proprioreceptor', :points => 5, :release_date => DateTime.strptime("11/18/2016 17:00", "%m/%d/%Y %H:%M") # B: Mechanoreceptor
+challenge7 = Challenge.create :course_id => 1, :user_id => 3, :question => 'Which kind of dendrite responds to physical pressure? A: Chemoreceptor B: Mechanoreceptor C: Tactoreceptor D: Proprioreceptor', :points => 5, :release_date => DateTime.strptime("11/18/2016 17:00", "%m/%d/%Y %H:%M") # B: Mechanoreceptor
 
 
 
