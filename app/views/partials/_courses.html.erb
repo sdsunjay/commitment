@@ -2,7 +2,7 @@
     <% @courses.each_with_index do |course, index| %>
         <article class="single-from-blog wow fadeInLeft">
             <div class="blog-title">
-                <h2><%= course.course_number %><%= course.name %> </h2>
+                <h2><%= course.course_number %><%= link_to course.name, course_path(course) %> </h2>
                 <p>Taught by Dr. Clark Savage</p>
             </div>
             <p>
