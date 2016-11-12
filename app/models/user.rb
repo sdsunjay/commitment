@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :name, presence: { message: 'You must enter your name'}
 # validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.edu))\z/i, on: :create }
 
-  validates_uniqueness_of :email
+# validates_uniqueness_of :email
   enum role: [:student, :teacher, :customer, :admin, :super_admin]
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
@@ -43,10 +43,16 @@ class User < ActiveRecord::Base
       if user.nil?
         # insert all the data into the db
 # user = User.new(name:auth.extra.raw_info.first_name + auth.extra.raw_info.last_name, profile_picture:auth.info.image, email: auth.info.email, password: Devise.friendly_token[0,20])
-        user = User.new(name:auth.extra.raw_info.first_name + auth.extra.raw_info.last_name, email: auth.info.email, password: Devise.friendly_token[0,20])
+        user = User.new(school_id: 1, name:auth.extra.raw_info.first_name + auth.extra.raw_info.last_name, email: auth.info.email, password: Devise.friendly_token[0,20])
         #user.skip_confirmation!
         #user.skip_confirmation! if user.respond_to?(:skip_confirmation)
-        user.save!(validate: false)
+        if user.save
+          flash[:notice] = 'User saved successfully'
+	  redirect_to root
+        else
+	    #Saving failed, we can inspect @user.errors for more information
+	    flash[:alert] = 'User was not saved.' 
+        end	
       end
     end
   end

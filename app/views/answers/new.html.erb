@@ -2,7 +2,7 @@
 
 <div class="container comment-form">
    <div class="row">
-      <%= form_for @answer, :url => course_challenge_answers_path(@course_id, @challenge), html: {class: "comment-form"} do |f| %>
+      <%= form_for @answer, :url => course_challenge_answers_path(@course, @challenge), html: {class: "comment-form"} do |f| %>
 
       <div class="form-group">
          <h2>

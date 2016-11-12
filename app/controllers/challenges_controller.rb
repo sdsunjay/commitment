@@ -33,7 +33,7 @@ class ChallengesController < ApplicationController
       flash[:notice] = 'Challenge Created'
       redirect_to courses_path
     else
-      render 'new'
+      flash[:alert] = 'Challenge Not Created'
     end
   end
 
