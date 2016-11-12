@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :enrollments, only: [:new, :create]
     resources :answers, only: [:index, :edit, :update]
     resources :courses, only: [:show, :index, :new, :create] do
-      resources :challenges, only: [:index, :edit, :new, :create, :edit, :update] do
+      resources :challenges, only: [:index, :show, :edit, :new, :create, :edit, :update] do
         resources :answers, only: [:new, :create]
       end
     end
