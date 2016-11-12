@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
-  #before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  before_action :set_user, :finish_signup
+  before_action :set_user
   before_filter :authenticate_user!
-  before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
-
 
  def index
     #authorize! 
@@ -19,14 +16,10 @@ class UsersController < ApplicationController
 
   # GET /users/:id.:format
   def show
-    @user = User.find(params[:id])
-    # authorize! :read, @user
   end
 
   # GET /users/:id/edit
   def edit
-    @user = User.find(params[:id])
-    # authorize! :update, @user
   end
 
   # PATCH/PUT /users/:id.:format
@@ -59,6 +52,8 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = User.find(params[:id])
+      @courses = Course.where(user_id: @user.id).order(created_at: :desc).paginate(per_page: 5, page: params[:page])
+      @answers = Answer.where(user_id: @user.id).order(created_at: :desc).paginate(per_page: 5, page: params[:page])
     end
 
     def user_params
