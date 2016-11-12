@@ -19,7 +19,9 @@ gem 'turbolinks'
 
 # for scope.. git it
 gem 'has_scope', '~> 0.7.0'
-
+gem 'momentjs-rails', '>= 2.9.0'
+# Use for datepicker 
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 # Use for pagination
 gem "will_paginate", '~> 3.0'
 # Use for uploading files

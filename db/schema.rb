@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112090953) do
+ActiveRecord::Schema.define(version: 20161112185016) do
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "user_id",                      null: false
-    t.integer  "challenge_id",                 null: false
-    t.text     "attempt",                      null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.boolean  "correct",      default: false
+    t.integer  "user_id",      null: false
+    t.integer  "challenge_id", null: false
+    t.text     "attempt",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "challenges", force: :cascade do |t|
-    t.integer  "course_id",                null: false
-    t.integer  "user_id",                  null: false
-    t.text     "question",                 null: false
-    t.integer  "points",       default: 0, null: false
-    t.datetime "release_date",             null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "course_id",                   null: false
+    t.integer  "user_id",                     null: false
+    t.text     "question",                    null: false
+    t.integer  "points",         default: 0,  null: false
+    t.datetime "release_date",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.text     "correct_answer", default: ""
   end
 
   create_table "courses", force: :cascade do |t|

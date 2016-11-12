@@ -22,13 +22,23 @@
         <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
           <li><%= link_to 'Home', root_path %></li>
           <% if user_signed_in? %>            
-            <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course <span class="fa fa-angle-down"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="course.html">Course Archive</a></li>                
-                <li><a href="course-detail.html">Course Detail</a></li>                
-              </ul>
-            </li> 
+             <li class="dropdown">
+	       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add New<span class="caret"></span></a>
+		  <ul class="dropdown-menu" "navbar-right" role="menu">
+		  </ul>
+	    </li>	
+
+	    <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Courses<span class="caret"></span></a>
+              <ul class="dropdown-menu" "navbar-right" role="menu"> 
+		  <li><%= link_to 'PSY-201',  course_path(1) %></li>
+		  <li><%= link_to 'PSY-202',  course_path(2) %></li>
+		  <li><%= link_to 'PSY-212',  course_path(3) %></li>
+		  <li><%= link_to 'PSY-252',  course_path(4) %></li>
+	       </ul>
+	    </li>
+      
+	    <li><%= link_to 'Question',  new_course_challenge_path(1) %></li>
             <li><%= link_to 'My Profile', current_user, class: 'less-padding' %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'less-padding' %></li>
           <% else %>
