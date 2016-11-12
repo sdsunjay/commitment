@@ -1,29 +1,34 @@
-<h2>Sign up</h2>
+<%= title 'Sign Up' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= render 'partials/alerts' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<section>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-10 col-sm-12'>
+                <br/>
+                <div class='textcenter'>
+                    <h4>Already have an account? Click
+                        <%= link_to 'HERE', new_user_session_path %>
+                    </h4>
+                </div><!-- end .textcenter -->
+            </div><!-- end .col-lg-offset-3 .col-md-offset-2 .col-lg-6 .col-md-8 .col-sm-12 -->
+            <div class='col-lg-offset-3 col-md-offset-2 col-lg-6 col-md-8 col-sm-12'>
+                <br/>
+                <div class='textcenter'>
+                    <%= link_to image_tag('/assets/facebooksignup.png', style: 'height: 40px; margin-bottom: 20px'), omniauth_authorize_path(resource_name, 'facebook') %>
+                </div><!-- end .textcenter -->    
+            </div><!-- end .col-lg-offset-3 .col-md-offset-2 .col-lg-6 .col-md-8 .col-sm-12 -->
+            <div class='col-md-offset-1 col-md-10 col-sm-12'>
+                <div class='page-content'>
+                    <%= render 'form' %>
+                </div> <!-- end .page-content --> 
+            </div><!-- end .col-lg-offset-3 .col-md-offset-2 .col-lg-6 .col-md-8 .col-sm-12 -->
+        </div><!-- end .row --> 
+        <div class="row">
+            <div class='col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-10 col-sm-12'>
+                <%= render 'devise/shared/links' %>
+            </div><!-- end .col-lg-offset-2 .col-md-offset-1 .col-lg-8 .col-md-10 .col-sm-12 -->
+        </div><!-- end .row --> 
+    </div><!-- end .container --> 
+</section>

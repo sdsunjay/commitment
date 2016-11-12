@@ -39,6 +39,11 @@ body {
   overflow-x: hidden;
 }
 
+.textcenter
+{
+    text-align: center
+}
+
 .no-padding {
   padding: 0;
 }
@@ -1589,6 +1594,83 @@ img {
 }
 .mu-comments-area .comments .commentlist > li:last-child {
   margin-bottom: 0px;
+}
+
+.comment-form .form-group input {
+  background-color: #f8f8f8;
+  border: 1px solid #aeaeae;
+  border-radius: 0;
+  color: #858585;
+  font-size: 18px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.comment-form .form-group select {
+  -webkit-appearance: none;
+  background-color: #f8f8f8;
+  border: 1px solid #aeaeae;
+  border-radius: 0;
+  color: #858585;
+  font-size: 18px;
+  height: 40px;
+  margin-bottom: 20px;
+  background-image: url("/assets/arrowsmalldownbtn.png");
+  background-position: center right;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+.comment-form .form-group textarea{
+  color: #858585;
+  background-color: #f8f8f8;
+  border: 1px solid #aeaeae;
+  border-radius: 0;
+  font-size: 18px;
+  height: 190px;
+  width: 80%;
+}
+.comment-form .form-control:focus {
+    outline: 0;
+    box-shadow: none;    
+} 
+.comment-form .form-control::-webkit-input-placeholder {
+  color: #858585;
+  font-size: 18px;
+}
+
+.comment-form .form-control:-moz-placeholder { /* Firefox 18- */
+  color: #858585;
+  font-size: 18px;
+}
+
+.comment-form .form-control::-moz-placeholder {  /* Firefox 19+ */
+  color: #858585;
+  font-size: 18px;
+}
+
+.comment-form .form-control:-ms-input-placeholder {  
+    color: #858585;
+   font-size: 18px;
+}
+.comment-form button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 18px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.comment-form button:hover, .comment-form button:focus {
+  color: #fff;
+}
+
+.comment-form.button-default::after,
+.comment-form .button-default > span {
+    padding: 12px 40px;  
 }
 
 #respond {

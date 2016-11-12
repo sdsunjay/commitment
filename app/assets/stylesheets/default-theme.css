@@ -238,6 +238,15 @@ Author URI : http://www.markups.io/
   background-color: #01bafd;
 }
 
+.comment-form .form-control:focus {
+  border-color: #01bafd;   
+} 
+
+.comment-form button:hover, .comment-form button:focus {
+  background-color: #01bafd;
+  border-color: #01bafd;
+}
+
 /*=======================================
 Template Design By MarkUps.
 Author URI : http://www.markups.io/
