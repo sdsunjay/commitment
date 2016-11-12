@@ -49,11 +49,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def connect
+    @enrollment = Enrollment.new
+    @course = Course.find(params[:id])
+    if Course.exists?(id: params[:id])
+      @enrollment.user_id = current_user.id
+      @enrollment.course_id = params[:id]
+       if @enrollment.save
+	 flash[:notice] = 'Driver has been notified'
+	 redirect_to root_path
+       else
+	 flash[:alert] = "Unable to enroll"
+       end
+    else
+       flash[:alert] = "Unable to enroll"
+    end
+  end
+
   private
     def set_user
       @enrollment = Enrollment.new
       @all_courses = Course.all.order(created_at: :desc).paginate(per_page: 5, page: params[:page])
-      @user = User.find(params[:id])
+      @user = User.find(current_user.id)
       @courses = current_user.courses.order(created_at: :desc).paginate(per_page: 5, page: params[:page])
       @answers = current_user.answers.order(created_at: :desc).paginate(per_page: 5, page: params[:page])
     end
