@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112044828) do
+ActiveRecord::Schema.define(version: 20161112090953) do
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "user_id",      null: false
-    t.integer  "challenge_id", null: false
-    t.text     "attempt",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "challenge_id",                 null: false
+    t.text     "attempt",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "correct",      default: false
   end
 
   create_table "challenges", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 20161112044828) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "role",                               default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

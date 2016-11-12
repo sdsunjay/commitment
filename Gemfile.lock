@@ -189,7 +189,6 @@ GEM
     rdoc (4.3.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    rolify (5.1.0)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -258,7 +257,6 @@ DEPENDENCIES
   paperclip (~> 4.3)
   passenger (= 5.0.26)
   rails (= 4.2.4)
-  rolify (~> 5.1.0)
   sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
   spring
@@ -267,3 +265,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   will_paginate (~> 3.0)
+
+BUNDLED WITH
+   1.13.6
