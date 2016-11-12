@@ -1,22 +1,65 @@
-<%= title "Make a new attempt!" %>
+<%= title "Attempt A Challenge" %>
 
-<div class="container comment-form">
-   <div class="row">
-      <%= form_for @answer, :url => course_challenge_answers_path(@course, @challenge), html: {class: "comment-form"} do |f| %>
+<section id="mu-course-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mu-course-content-area">
+          <div class="row">
+            <div class="col-md-9">
+              <!-- start course content container -->
+              <div class="mu-course-container mu-course-details">
+               
+                <%= form_for @answer, :url => course_challenge_answers_path(@course, @challenge), html: {class: "comment-form"} do |f| %>
 
-      <div class="form-group">
-         <h2>
-            <%= f.label @challenge.question %>
-         </h2>
-         <%= f.text_area :attempt, class: 'form-control' %>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                     <blockquote><%= f.label @challenge.question %></blockquote>
+                     <%= f.text_area :attempt, class: 'form-control', placeholder: 'Enter your answer here...' %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                    <br/>
+                      <%= f.button :submit, class:'button button-default', 'data-text': 'SUBMIT' do %>
+                    <span>SUBMIT</span>
+                      <% end %>
+                   </div>
+                  </div>
+
+                   <% end %>
+
+              </div>
+              <!-- end course content container -->
+            </div>
+            <div class="col-md-3">
+              <!-- start sidebar -->
+              <aside class="mu-sidebar">
+                <!-- start single sidebar -->
+                <div class="mu-single-sidebar">
+                  <h3>Course Details</h3>
+                  <ul class="mu-sidebar-catg">
+                    <li><a><%= @course.name %></a></li>
+                    <li><a><%= @course.course_number %></a></li>
+                    <li><a>
+                      <% if @course.created_at > Time.now.beginning_of_day %>
+                      <%="#{time_ago_in_words(@course.created_at)} ago"%>
+                      <% else %>
+                      <%= @course.created_at.strftime("%b %d, %Y") %>
+                      <% end %>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- end single sidebar -->
+
+            </aside>
+            <!-- / end sidebar -->
+          </div>
+        </div>
       </div>
-
-	    <div class="col-xs-12">
-	       <%= f.button :submit, class:'button button-default', 'data-text': 'SUBMIT' do %>
-		  <span>SUBMIT</span>
-	       <% end %>
-	    </div>
-
-      <% end %>
-   </div>
+    </div>
+  </div>
 </div>
+</section>
+
