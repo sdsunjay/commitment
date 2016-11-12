@@ -1,0 +1,39 @@
+<% if @courses.exists? %>
+    <% @courses.each_with_index do |course, index| %>
+        <article class="single-from-blog wow fadeInLeft">
+            <div class="blog-title">
+                <h2><%= course.course_number %><%= course.name %> </h2>
+                <p>Taught by Dr. Clark Savage</p>
+            </div>
+            <p>
+                <%= label_tag :description, 'Description' %><br/>
+                <%= course.description %>
+            </p>
+            <div class="blog-footer">
+                <a href="#" class="tooltip-link" data-original-title="Number of enrollments" data-toggle="tooltip">
+                    <span class="fa fa-user"></span>
+                        N/A
+                </a>
+                
+                <% if user_signed_in? %>
+                    <% if current_user.role == 4 %>
+                        <%= link_to raw('<span class="fa fa-edit"></span>Edit'), edit_course_path(course), class: 'tooltip-link', 'data-original-title': 'Edit Course Details', 'data-toggle': 'tooltip' %> 
+                        <%= link_to raw('<span class="fa fa-remove"></span>Delete'), course_path(course), class: 'tooltip-link', 'data-original-title': 'Delete Course', 'data-toggle': 'tooltip', method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+               <% end %>
+                    <br/>
+                    <br/>
+                    <p>
+                    </p>
+            </div>
+        </article>
+    <% end %>
+   <%= will_paginate @courses %>
+<% else %>
+    <article class="single-from-blog">
+        <div class="blog-title">
+            <h2>No courses yet</h2>
+        </div>
+    </article>
+<% end %>
+
