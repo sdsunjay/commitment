@@ -1,6 +1,6 @@
 <% if @challenges.exists? %>
   <% @challenges.each_with_index do |challenge, index| %>
-    <%= link_to new_course_challenge_path(challenge.id), class: 'list-group-item' do %>
+    <%= link_to new_course_challenge_answer_path(@course.id, challenge.id), class: 'list-group-item' do %>
           <%= challenge.question %>
           <span class="pull-right">Due today</span>
     <% end %>
