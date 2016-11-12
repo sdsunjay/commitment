@@ -39,14 +39,14 @@ schools = School.create ([
 	{name: "University of California, Santa Barbara", address: "Santa Barbara, CA 93106"}])
 
 users = User.create!([
-      {email: "sdhama@calpoly.edu", name:"Sunjay Dhama", school_id: 0, password: "password", role: 4},
-      {email: "pgeorgie@calpoly.edu", name:"Petar Georgiev", school_id: 0, password: "password", role: 4},
-      {email: "efiske@calpoly.edu", name:"Elliot Fiske", school_id: 0, password: "password", role: 4},
-      {email: "ian@calpoly.edu",name:"Ian Mitchell", school_id: 0, password: "password", role: 4},
-      {email: "michael@calpoly.edu", name:"Michael Smith", school_id: 0,  password: "password", role: 4},
-      {email: "rhlevine@calpoly.edu", name:"Ross Levine", school_id: 0, password: "password", role: 4},
-      {email: "jeffrey@calpoly.edu", name:"Jeffrey Do", school_id: 0, password: "password", role: 4},
-      {email: "mfouzi@calpoly.edu", name:"Monty Fouzi", school_id: 0, password: "password", role: 4}])
+      {email: "sdhama@calpoly.edu", name:"Sunjay Dhama", school_id: 1, password: "password", role: 4},
+      {email: "pgeorgie@calpoly.edu", name:"Petar Georgiev", school_id: 1, password: "password", role: 4},
+      {email: "efiske@calpoly.edu", name:"Elliot Fiske", school_id: 1, password: "password", role: 4},
+      {email: "ian@calpoly.edu",name:"Ian Mitchell", school_id: 2, password: "password", role: 4},
+      {email: "michael@calpoly.edu", name:"Michael Smith", school_id: 2,  password: "password", role: 4},
+      {email: "rhlevine@calpoly.edu", name:"Ross Levine", school_id: 3, password: "password", role: 4},
+      {email: "jeffrey@calpoly.edu", name:"Jeffrey Do", school_id: 3, password: "password", role: 4},
+      {email: "mfouzi@calpoly.edu", name:"Monty Fouzi", school_id: 3, password: "password", role: 4}])
 challenges = Challenge.create ([
 	{course_id: 1, user_id: 3, question: "What is the second stage in the scientific method?", points: 5, release_date: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")}, # form a "hypothesis"
 	{course_id: 1, user_id: 3, question: "A researcher observes the behavior of students in the library without interacting with them. What type of study is this?", points: 5, release_date: DateTime.strptime("11/13/2016 17:00", "%m/%d/%Y %H:%M")}, # Naturalistic observation
@@ -56,4 +56,26 @@ challenges = Challenge.create ([
 	{course_id: 1, user_id: 3, question: "What is the resting voltage difference in a neuron, in millivolts?", points: 10, release_date: DateTime.strptime("11/17/2016 17:00", "%m/%d/%Y %H:%M")}, # -70
 	{course_id: 1, user_id: 3, question: "Which kind of dendrite responds to physical pressure? A: Chemoreceptor B: Mechanoreceptor C: Tactoreceptor D: Proprioreceptor", points: 5, release_date: DateTime.strptime("11/18/2016 17:00", "%m/%d/%Y %H:%M")}]) # B: Mechanoreceptor
 
-enrollment = Enrollment.create user_id: 1, course_id: 1, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")
+enrollment = Enrollment.create ([
+	{user_id: 1, course_id: 1, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 1, course_id: 19, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 1, course_id: 20, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 2, course_id: 10, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 2, course_id: 13, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 2, course_id: 15, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 2, course_id: 17, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 3, course_id: 20, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 3, course_id: 10, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 3, course_id: 13, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 4, course_id: 15, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 4, course_id: 11, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 4, course_id: 18, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 5, course_id: 7, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 5, course_id: 9, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 5, course_id: 2, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 6, course_id: 3, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 6, course_id: 5, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 6, course_id: 19, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 7, course_id: 17, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 7, course_id: 19, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")},
+	{user_id: 7, course_id: 12, created_at: DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")}])

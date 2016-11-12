@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :courses, through: :enrollments, dependent: :destroy
   has_many :enrollments
 
-  has_one :school
+  belongs_to :school
   validates :email, presence: {message: 'You must enter your email'}
   validates :name, presence: { message: 'You must enter your name' }
   validates :school_id, presence: { message: 'You must enter your school' }
