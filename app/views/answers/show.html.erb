@@ -1,0 +1,11 @@
+
+   <p>Question:</p>
+   <p><%= @challenge.question %>
+    <% if @challenge.correct_answer.present? %>
+   <p>Correct Answer:</p>
+   <p><%= @challenge.correct_answer %>
+   <% end %>
+    <% if @answer.attempt.present? %>
+   <p>Your Answer:</p>
+   <p><%= @answer.attempt %>
+   <% end %>

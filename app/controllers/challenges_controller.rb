@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
 
-  before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :set_challenge, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   has_scope :recent, :type => :boolean
@@ -16,8 +16,6 @@ class ChallengesController < ApplicationController
 #    end
   end
 
-  def show
-  end
 
   def new
     @page_title = 'Add Challenge'

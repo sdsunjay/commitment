@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
 
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_answer, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   has_scope :recent, :type => :boolean
@@ -28,14 +28,20 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.build(answer_params)
     @answer.user_id = current_user.id
     @answer.challenge_id = params[:challenge_id]
+    @course = Course.find(params[:course_id])
 
     # Save the answer
     if @answer.save
-      redirect_to course_path(params[:course_id])
       flash[:notice] = 'Answer Created'
+      redirect_to course_challenge_answer_path(@course, @challenge, @answer) 
     else
       render 'new'
     end
+  end
+  
+  def show
+      @challenge = Challenge.find(params[:challenge_id])
+      @answer = Answer.find(params[:id])
   end
 
   def edit
