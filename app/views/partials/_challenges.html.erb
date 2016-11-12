@@ -1,0 +1,89 @@
+<% if @challenges.exists? %>
+  <% @posts.each_with_index do |post, index| %>
+  <article class="single-from-blog wow fadeInLeft">
+    <div class="blog-title">
+      <h2>From <%= post.start_location.city %> to <%= post.end_location.city %></h2>
+      <p>
+        Ride with <%= link_to post.user.first_name+' '+post.user.last_name, user_path(post.user) %> on 
+        <a href="#" class="tooltip-link" data-original-title="Date" data-toggle="tooltip">
+          <i class="fa fa-calendar"></i>
+          <%= post.when_date.to_time.strftime('%B %e at %l:%M %p' ) %>
+        </a>
+      </p>
+    </div>
+    <p>
+      <%= label_tag :description, 'Description' %><br/>
+      <%= post.description %>
+    </p>
+    <div class="blog-footer">
+      <a href="#" class="tooltip-link" data-original-title="Number of seats" data-toggle="tooltip">
+        <span class="fa fa-user"></span>
+        <% if post.seats? %>
+        <%= post.seats %>
+        <% else %>
+        N/A
+        <% end %>
+      </a>
+      <a href="#" class="tooltip-link" data-original-title="Price" data-toggle="tooltip">
+        <span class="fa fa-dollar"></span>
+        <% if post.price != 0 %>
+        <%= post.price.to_i %>
+        <% else %>
+        Free
+        <% end %>
+      </a>
+
+      <% if user_signed_in? %>
+      <% if post.user_is_driver?(current_user.id) && post.status != 'complete' %>
+      <%= link_to raw('<span class="fa fa-edit"></span>Edit'), edit_post_path(post), class: 'tooltip-link', 'data-original-title': 'Edit Ride Details', 'data-toggle': 'tooltip' %> 
+      <%= link_to raw('<span class="fa fa-remove"></span>Delete'), post_path(post), class: 'tooltip-link', 'data-original-title': 'Delete Ride', 'data-toggle': 'tooltip', method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <% if post.status == 'complete' %>
+      <% if post.user_is_driver?(current_user.id) || post.user_is_passenger?(current_user.id) %>
+      <%= link_to raw('<span class="fa fa-comment"></span>Review'), new_post_review_path(post), class: 'tooltip-link', 'data-original-title': 'Write a Review', 'data-toggle': 'tooltip' %><br>
+      <% end %>
+      <% elsif post.status == 'pending' %>
+      <% if post.user_is_passenger?(current_user.id) %>
+      <p>You are going on this ride</p>
+      <% elsif post.seats > 0 && !post.user_is_driver?(current_user.id) %> 
+      <%= link_to raw('<span class="fa fa-user-plus"></span>Join'), post_connect_path(post), class: 'tooltip-link', 'data-original-title': 'Express interest', 'data-toggle': 'tooltip' %>
+      <% end %>
+      <% elsif post.status == 'open' %>
+      <% if post.user_is_passenger?(current_user.id) %>
+      <p>You are going on this ride</p>
+      <% elsif post.seats > 0 && !post.user_is_driver?(current_user.id) %> 
+      <%= link_to raw('<span class="fa fa-user-plus"></span>Join'), post_connect_path(post), class: 'tooltip-link', 'data-original-title': 'Express interest', 'data-toggle': 'tooltip' %>
+      <% end %>
+      <% end %>
+      <br/>
+      <br/>
+      <p>
+        <% if post.user_is_driver?(current_user.id) %>
+        <%= label_tag :passengers, 'Passenger List' %><br/>
+        <% if post.status == 'open' %>
+        No passengers yet
+        <% else %>
+        <% post.riders.each do |rider| %>
+        <%= link_to user_path(rider.user) do %>
+        <div style="display: inline-table;">
+          <%= image_tag rider.user.profile_picture, size: '45', class: 'thumbnail' %>
+          <p style="vertical-align: super; display: inline-table;     padding-left: 5px;"><%= rider.user.first_name + ' ' + rider.user.last_name %></p>
+        </div>
+        <% end %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </p>
+      <% else %>
+      <%= link_to raw('<span class="fa fa-user-plus"></span>Join'), post_connect_path(post), class: 'tooltip-link', 'data-original-title': 'Express interest', 'data-toggle': 'tooltip' %>
+      <% end %>
+    </div>
+  </article>
+  <% end %>
+<% else %>
+  <article class="single-from-blog">
+    <div class="blog-title">
+      <h2>No posts yet</h2>
+    </div>
+  </article>
+<% end %>
