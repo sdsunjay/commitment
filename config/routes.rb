@@ -10,7 +10,11 @@ Rails.application.routes.draw do
       end
     end
     resources :users, only: [:show, :index, :edit, :update]
-  root to: 'users#show', as: :authenticated_root
   end
-  root 'home#index'
+
+  authenticated :user do
+    root :to => 'users#show', as: :authenticated_root
+  end
+
+  root to: 'home#index'
 end
