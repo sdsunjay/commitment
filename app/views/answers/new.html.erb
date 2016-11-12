@@ -1,0 +1,13 @@
+<%= form_for @answer, :url => course_challenge_answers_path(@course_id, @challenge) do |f| %>
+
+<div class='form-group'>
+</div><!-- end .form-group -->
+
+<%= f.label @challenge.question %>
+<%= f.text_area(:attempt) %>
+
+<div class='form-group'>
+   <%= f.submit %>
+</div><!-- end .form-group -->
+
+<% end %>
