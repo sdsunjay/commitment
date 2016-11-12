@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :name, presence: { message: 'You must enter your name'}
 # validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.edu))\z/i, on: :create }
 
-# validates_uniqueness_of :email
+  validates_uniqueness_of :email
   enum role: [:student, :teacher, :customer, :admin, :super_admin]
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
