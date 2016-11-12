@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_one :school
   validates :email, presence: {message: 'You must enter your email'}
   validates :name, presence: { message: 'You must enter your name' }
-  validates :school, presence: { message: 'You must enter your school' }
+  validates :school_id, presence: { message: 'You must enter your school' }
   
 # validates_format_of :email, without: /\Achange@me/, on: :update
   validates :password, length: { minimum: 8, maximum: 64 }, unless: "password.nil?"
