@@ -1,39 +1,40 @@
 <% if @courses.exists? %>
     <% @courses.each_with_index do |course, index| %>
-        <article class="single-from-blog wow fadeInLeft">
-            <div class="blog-title">
-                <h2><%= course.course_number %><%= link_to course.name, course_path(course) %> </h2>
-                <p>Taught by Dr. Clark Savage</p>
+        <div class="col-md-6 col-sm-6">
+          <article class="mu-blog-single-item">
+            <figure class="mu-blog-single-img">
+              <figcaption class="mu-blog-caption">
+                <h3><%= course.name %></h3>
+              </figcaption>                      
+            </figure>
+            <div class="mu-blog-meta">
+              <a>By Admin
+              <a>
+                <% if course.created_at > Time.now.beginning_of_day %>
+                  <%="#{time_ago_in_words(course.created_at)} ago"%>
+                <% else %>
+                  <%= course.created_at.strftime("%b %d, %Y") %>
+                <% end %>
+              </a>
             </div>
-            <p>
-                <%= label_tag :description, 'Description' %><br/>
-                <%= course.description %>
-            </p>
-            <div class="blog-footer">
-                <a href="#" class="tooltip-link" data-original-title="Number of enrollments" data-toggle="tooltip">
-                    <span class="fa fa-user"></span>
-                        N/A
-                </a>
-                
-                <% if user_signed_in? %>
-                    <% if current_user.role == 4 %>
-                        <%= link_to raw('<span class="fa fa-edit"></span>Edit'), edit_course_path(course), class: 'tooltip-link', 'data-original-title': 'Edit Course Details', 'data-toggle': 'tooltip' %> 
-                        <%= link_to raw('<span class="fa fa-remove"></span>Delete'), course_path(course), class: 'tooltip-link', 'data-original-title': 'Delete Course', 'data-toggle': 'tooltip', method: :delete, data: { confirm: 'Are you sure?' } %>
-                    <% end %>
-               <% end %>
-                    <br/>
-                    <br/>
-                    <p>
-                    </p>
+            <div class="mu-blog-description">
+              <p><%= truncate(course.description, length: 200) %></p>
+              <%= link_to "Go To Course", course_path(course), class: 'mu-read-more-btn' %>
             </div>
-        </article>
+          </article> 
+        </div>  
     <% end %>
    <%= will_paginate @courses %>
 <% else %>
-    <article class="single-from-blog">
-        <div class="blog-title">
-            <h2>No courses yet</h2>
-        </div>
-    </article>
+  <div class="col-md-6 col-sm-6">
+    <article class="mu-blog-single-item">
+      <figure class="mu-blog-single-img">
+        <!-- <a href="#"><img src="assets/img/blog/blog-1.jpg" alt="img"></a> -->
+        <figcaption class="mu-blog-caption">
+          <h3>No courses yet</h3>
+        </figcaption>                      
+      </figure>
+    </article> 
+  </div>
 <% end %>
 
