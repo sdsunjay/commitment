@@ -42,6 +42,11 @@ user4 = User.create :name => "Michael Smith", :school_id => 0, :last_sign_in_at 
 challenge1 = Challenge.create :course_id => 1, :user_id => 3, :question => 'What is the second stage in the scientific method?', :points => 5, :release_date => DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M") # form a 'hypothesis'
 challenge2 = Challenge.create :course_id => 1, :user_id => 3, :question => 'A researcher observes the behavior of students in the library without interacting with them. What type of study is this?', :points => 5, :release_date => DateTime.strptime("11/13/2016 17:00", "%m/%d/%Y %H:%M") # Naturalistic observation
 challenge3 = Challenge.create :course_id => 1, :user_id => 3, :question => 'A _________ is a treatment that resembles medical treatment, but has no medical effects.', :points => 5, :release_date => DateTime.strptime("11/14/2016 17:00", "%m/%d/%Y %H:%M") # placebo
+challenge4 = Challenge.create :course_id => 1, :user_id => 3, :question => 'This type of cell makes up the majority of your brain.', :points => 5, :release_date => DateTime.strptime("11/15/2016 17:00", "%m/%d/%Y %H:%M") # glial
+challenge5 = Challenge.create :course_id => 1, :user_id => 3, :question => 'True or False: the synapse is a gap between the end bulbs and the dendrites.', :points => 5, :release_date => DateTime.strptime("11/16/2016 17:00", "%m/%d/%Y %H:%M") # true
+challenge6 = Challenge.create :course_id => 1, :user_id => 3, :question => 'What is the resting voltage difference in a neuron, in millivolts?', :points => 10, :release_date => DateTime.strptime("11/17/2016 17:00", "%m/%d/%Y %H:%M") # -70
+challenge6 = Challenge.create :course_id => 1, :user_id => 3, :question => 'Which kind of dendrite responds to physical pressure? A: Chemoreceptor B: Mechanoreceptor C: Tactoreceptor D: Proprioreceptor', :points => 5, :release_date => DateTime.strptime("11/18/2016 17:00", "%m/%d/%Y %H:%M") # B: Mechanoreceptor
+
 
 
 enrollment = Enrollment.create :user_id => 1, :course_id => 1, :created_at => DateTime.strptime("11/12/2016 17:00", "%m/%d/%Y %H:%M")
