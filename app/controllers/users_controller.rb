@@ -56,7 +56,7 @@ class UsersController < ApplicationController
       @enrollment.user_id = current_user.id
       @enrollment.course_id = params[:id]
        if @enrollment.save
-	 flash[:notice] = 'Driver has been notified'
+	 flash[:notice] = 'You have enrolled'
 	 redirect_to root_path
        else
 	 flash[:alert] = "Unable to enroll"
