@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       @enrollment.course_id = params[:id]
        if @enrollment.save
 	 flash[:notice] = 'You have enrolled'
-	 redirect_to root_path
+	 redirect_to course_path(@course)
        else
 	 flash[:alert] = "Unable to enroll"
        end
