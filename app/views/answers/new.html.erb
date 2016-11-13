@@ -10,11 +10,13 @@
               <!-- start course content container -->
               <div class="mu-course-container mu-course-details">
                
+                <blockquote>
+                  <h2>Question</h2>
+                  <p><%= @challenge.question %></p>
+                </blockquote>
                 <%= form_for @answer, :url => course_challenge_answers_path(@course, @challenge), html: {class: "comment-form"} do |f| %>
-
-                  <div class="form-group">
+		  <div class="form-group">
                     <div class="col-xs-12">
-                     <blockquote><%= f.label @challenge.question %></blockquote>
                      <%= f.text_area :attempt, class: 'form-control', placeholder: 'Enter your answer here...' %>
                      </div>
                   </div>
