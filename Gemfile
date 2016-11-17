@@ -48,7 +48,7 @@ group :development, :production do
 end
 
 
-
+gem 'rake','11.3.0'
 gem 'font-awesome-rails', '~> 4.5.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'

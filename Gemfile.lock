@@ -263,6 +263,7 @@ DEPENDENCIES
   paperclip (~> 4.3)
   passenger (= 5.0.26)
   rails (= 4.2.4)
+  rake (= 11.3.0)
   sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
   spring
